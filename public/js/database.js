@@ -23,7 +23,7 @@ var charaData = [
 }
 ];
 // 初期化関数
-function init($id, DB){
+function init(id, DB){
   var nameArray = [];
   //名前文字列をhtmlリスト形に整形する関数
   function evaluateName(charaInfo){
@@ -37,7 +37,7 @@ function init($id, DB){
     nameArray.push(evaluateName(DB[i]));
   }
   // <div>に<ul></ul>を作成し、リストを中に入れる
-  $id.innerHTML = "<ul class = 'nameList'>"+nameArray.join("")+"</ul>"
+  id.innerHTML = "<ul class = 'nameList'>"+nameArray.join("")+"</ul>"
 }
-var $divId = document.getElementById('info');
-init($divId,charaData);
+var $divId = $('#info')[0];
+init($divId, charaData);

@@ -35,7 +35,7 @@ function showResult(){
 //[name1,name1,name2,name2...]　キャラの人数分配列names_arrayにpushする
   if ($names.length === $numbers.length){
     for (var i = 0; i < $names.length; i++){
-      pushNamesbyNumber($names[i],$numbers[i]);
+      pushNamesbyNumber($names[i], $numbers[i]);
     }
   }
 // names_arrayからinstance_arrayを作る
@@ -59,14 +59,14 @@ function showResult(){
 //フィルターしたパターンのattach合計を計算する
   for (var i = 0; i < patternsFilterFires.length; i++){
     var pattern = patternsFilterFires[i];
-    attacksum_array.push(addTogetherProperty(pattern,"attack", 0));
+    attacksum_array.push(addTogetherProperty(pattern, "attack", 0));
   }
 // 上記フィルターしたオブジェクトに対して、attack合計最大な項目を出す
   filteredObject = filterMaxAttack(attacksum_array, patternsFilterFires);
 //ネーム配列として整形し、重複項目を削除
   if (filteredObject.length > 0){
     for (var i = 0; i < filteredObject.length; i++){
-     nameResult.push(addTogetherProperty(filteredObject[i],"name", "-"));
+     nameResult.push(addTogetherProperty(filteredObject[i], "name", "-"));
     }
   }
 //ネーム結果配列に対して、2項目以上の場合、重複項目を削除する
@@ -79,7 +79,7 @@ function showResult(){
 //----------------------------------------------------関数定義：----------------------------------
 /*関数pushNamesbyNumber：$number分の$nameを配列にpushする
   万が一クラス名を変更することを前提として*/
-  function pushNamesbyNumber($name,$number){
+  function pushNamesbyNumber($name, $number){
     if ($name && $number){
       var name = $name.innerText,
           number = Number($number.value);　// .valueのブラウザ対応検討入り
@@ -100,7 +100,7 @@ function showResult(){
         var first = _array.shift(_array[0]);
         var randomTwo = ramdomTwoFromRest(_array);
         for (var n = 0; n < randomTwo.length; n++){
-          threePatterns.push([first,randomTwo[n][0],randomTwo[n][1]]);
+          threePatterns.push([first,randomTwo[n][0], randomTwo[n][1]]);
         }
     }
     return threePatterns;
@@ -125,7 +125,7 @@ function showResult(){
   function filterFire(array){
     var result =[];
     for (var i = 0; i < array.length; i++){
-      var sum = addTogetherProperty(array[i],"fire", 0);
+      var sum = addTogetherProperty(array[i], "fire", 0);
       if (array[i].length === 3 && sum <= 5){
         result.push(array[i]);
       }
