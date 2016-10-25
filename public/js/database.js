@@ -20,6 +20,14 @@ var charaData = [
 {name: "fish",
  fire: 3,
  attack: 1000
+},
+{name: "snake",
+ fire: 2,
+ attack: 700
+},
+{name: "frog",
+ fire: 1,
+ attack: 400
 }
 ];
 // 初期化関数
