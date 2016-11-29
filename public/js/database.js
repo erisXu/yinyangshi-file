@@ -20,32 +20,26 @@ var charaData = [
 {name: "fish",
  fire: 3,
  attack: 1000
-},
-{name: "snake",
- fire: 2,
- attack: 700
-},
-{name: "frog",
- fire: 1,
- attack: 400
 }
 ];
 // 初期化関数
-function init(id, DB){
-  var nameArray = [];
-  //名前文字列をhtmlリスト形に整形する関数
-  function evaluateName(charaInfo){
-    var name = charaInfo.name || "",
-         nameInList = "<li class = 'name'> "+name+"</li>",
-         nameBox = nameInList + "<input class = 'number'>" + "<p class = 'error'></p>";
-    return nameBox;
+(function(){
+  function init(id, DB){
+    var nameArray = [];
+    //名前文字列をhtmlリスト形に整形する関数
+    function evaluateName(charaInfo){
+      var name = charaInfo.name || "",
+           nameInList = "<li class = 'name'> "+name+"</li>",
+           nameBox = nameInList + "<input class = 'number'>" + "<p class = 'error'></p>";
+      return nameBox;
+    }
+    // データベース配列にあるすべてのオブジェクトの名前プロパティに整形を与える
+    for (var i = 0; i < DB.length; i++){
+      nameArray.push(evaluateName(DB[i]));
+    }
+    // <div>に<ul></ul>を作成し、リストを中に入れる
+    id.innerHTML = "<ul class = 'nameList'>"+nameArray.join("")+"</ul>"
   }
-  // データベース配列にあるすべてのオブジェクトの名前プロパティに整形を与える
-  for (var i = 0; i < DB.length; i++){
-    nameArray.push(evaluateName(DB[i]));
-  }
-  // <div>に<ul></ul>を作成し、リストを中に入れる
-  id.innerHTML = "<ul class = 'nameList'>"+nameArray.join("")+"</ul>"
-}
-var $divId = $('#info')[0];
-init($divId, charaData);
+  var divId = document.getElementById('info');
+  init(divId,charaData);
+})();

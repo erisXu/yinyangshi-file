@@ -1,4 +1,4 @@
-// 入力ミス判定実行
+// submitイベント＋入力ミス判定実行
 'jQuery' in window && (function ($) {
   $('#calSubmit').on('click', uiReaction);
 
@@ -11,20 +11,19 @@
         Result = [];
 // エラーメッセージを初期化する；
     $error.empty();
-// 表示結果を初期化する；
+// 結果titleを初期化する；
     $resultTitle.empty();
-    $resultName.empty();
 //入力ミス判断
     for (var i = 0; i < $numbers.length; i++){
       errorCheck($numbers[i], $error[i]);
     }
 //入力ミスのない場合、結果titleを表示させます
 //cal.jsの判断に使う？
-    if (Result.length == $numbers.length && addNumber(Result) >= 3){
+    if (Result.length == $numbers.length){
       $resultTitle[0].innerText = "The best group are:";
       $resultName[0].innerText = showResult();
     }else{
-      $resultTitle[0].innerText = "エラーが起こってます！";
+      return;
     }
 
 // 記入漏れやミスがあるかどうかの判断関数
@@ -36,14 +35,6 @@
       }else{
         Result.push(num);
       }
-    }
-// 記入したキャラ合計数を計算する
-    function addNumber(Result){
-      var sum = 0;
-      for (var i = 0; i < Result.length; i++){
-        sum += Number(Result[i]);
-      }
-      return sum;
     }
   }
 }(jQuery));
